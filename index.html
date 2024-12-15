@@ -5,22 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Shop</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!--подключение к google formma - оптимизирует работу сайта => ускоряет-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!--подключение шрифта Montserrat-->
 </head>
 <body>
     <header>
         <div class="container">
             <div id="search-container">
                 <input type="text" placeholder="Search coffee..." id="search-bar">
+                <button class="search-button">&#128269;</button> <!--&#128269; - зннак лупы-->
             </div>
-            <div class="cart">
-                🛒 Cart (0)
+            <div class="order-status">
+                <button class="status-btn">&#128717; ORDER STATUS</button><!--очередное эмодзи для Html-->
+                <span class="cart-count">0</span>
             </div>
         </div>
     </header>
     <div class="main-container">
         <aside class="sidebar">
             <h2>Coffee Types</h2>
-            <ul>
+            <button id="prev-btn" class="nav-btn">&#9650;</button> <!--Кнопка для предыдущих типов кофе-->
+            <ul id="coffee-list">
                 <li><a href="#" class="coffee-type" data-type="espresso">Espresso</a></li>
                 <li><a href="#" class="coffee-type" data-type="latte">Latte</a></li>
                 <li><a href="#" class="coffee-type" data-type="cappuccino">Cappuccino</a></li>
@@ -28,6 +33,7 @@
                 <li><a href="#" class="coffee-type" data-type="mocha">Mocha</a></li>
                 <li><a href="#" class="coffee-type" data-type="all">All</a></li>
             </ul>
+            <button id="next-btn" class="nav-btn">&#9660;</button> <!--Кнопка для следующих типов кофе-->
         </aside>
         <main class="coffee-display">
             <h2>Our Coffee Selection</h2>
@@ -35,122 +41,162 @@
                 <div class="menu-item" data-type="espresso">
                     <img src="images/espresso.webp" alt="Espresso">
                     <h3>Espresso</h3>
-                    <p>$3.00</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.00</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="latte">
                     <img src="images/latte.jpg" alt="Latte">
                     <h3>Latte</h3>
-                    <p>$4.50</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$4.50</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="cappuccino">
                     <img src="images/cappuccino.jpg" alt="Cappuccino">
                     <h3>Cappuccino</h3>
-                    <p>$4.00</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$4.00</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="americano">
                     <img src="images/americano.webp" alt="Americano">
                     <h3>Americano</h3>
-                    <p>$3.50</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.50</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="mocha">
                     <img src="images/mocha.jpg" alt="Mocha">
                     <h3>Mocha</h3>
-                    <p>$5.00</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$5.00</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="espresso">
                     <img src="images/espresso_double.webp" alt="Espresso_double">
                     <h3>Espresso Double</h3>
-                    <p>$3.50</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.50</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="latte">
                     <img src="images/vanilla_latte.webp" alt="Vanilla_latte">
                     <h3>Vanilla Latte</h3>
-                    <p>$4.80</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$4.80</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="cappuccino">
                     <img src="images/caramel_cappuccino.webp" alt="caramel_cappuccino">
                     <h3>Caramel Cappuccino</h3>
-                    <p>$4.70</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$4.70</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="americano">
                     <img src="images/americano_iced.webp" alt="americano_iced">
                     <h3>Americano Iced</h3>
-                    <p>$3.80</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.80</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="mocha">
                     <img src="images/mocha_iced.jpg" alt="mocha_iced">
                     <h3>Mocha Iced</h3>
-                    <p>$5.30</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$5.30</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="espresso">
                     <img src="images/espresso_macchiato.avif" alt="espresso_macchiato">
                     <h3>Espresso Macchiato</h3>
-                    <p>$3.50</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.50</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="latte">
                     <img src="images/matcha_latte.jpg" alt="matcha_latte">
                     <h3>Matcha Latte</h3>
-                    <p>$5.00</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$5.00</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="cappuccino">
                     <img src="images/huzelnut_cappuccino.jpg" alt="huzelnut_cappuccino">
                     <h3>Hazelnut Cappuccino</h3>
-                    <p>$4.50</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$4.50</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="americano">
                     <img src="images/americano_black.jpg" alt="americano_black">
                     <h3>Americano Black</h3>
-                    <p>$3.60</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.60</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="mocha">
                     <img src="images/white_mocha.jpg" alt="white_mocha">
                     <h3>White Mocha</h3>
-                    <p>$5.20</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$5.20</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="espresso">
                     <img src="images/espresso_long.jpg" alt="espresso_long">
                     <h3>Espresso Long</h3>
-                    <p>$3.20</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.20</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="latte">
                     <img src="images/lavender_latte.jpg" alt="lavender_latte">
                     <h3>Lavender Latte</h3>
-                    <p>$5.00</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$5.00</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="cappuccino">
                     <img src="images/almond_milk_cappuccino.jpeg" alt="almond_milk_cappuccino">
                     <h3>Almond Milk Cappuccino</h3>
-                    <p>$4.80</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$4.80</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="americano">
                     <img src="images/americano_with_honey.jpg" alt="americano_with_honey">
                     <h3>Americano with Honey</h3>
-                    <p>$3.90</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$3.90</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
                 <div class="menu-item" data-type="mocha">
                     <img src="images/caramel_mocha.jpg" alt="caramel_mocha">
                     <h3>Caramel Mocha</h3>
-                    <p>$5.40</p>
-                    <button>Add to the cart</button>
+                    <div class="price-container">
+                        <span class="price">$5.40</span>
+                        <button class="add-btn">+</button>
+                    </div>
                 </div>
             </div>
         </main>
