@@ -1,0 +1,296 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfcfb;
+    color: #5c4b4b;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #fdfcfb;
+    border-bottom: 1px solid #e0d7d2;
+    align-items: center;
+}
+
+.back-btn {
+    color: #5c4b4b;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+}
+
+.status-btn {
+    background-color: #d3b18c;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cart-count {
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+.coffee-details {
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.coffee-image img {
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.coffee-info {
+    margin-left: 4rem;
+    max-width: 600px;
+}
+
+.coffee-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.coffee-info p {
+    font-size: 1rem;
+    color: #5c4b4b;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.options h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.size-btn, .extra-btn, .milk-btn {
+    padding: 0.5rem 1rem;
+    background-color: #f3f0ec;
+    border: 1px solid #d3b18c;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0.3rem;
+    font-weight: 600;
+}
+
+.size-btn.active, .extra-btn.active, .milk-btn.active {
+    background-color: #d3b18c;
+    color: #fff;
+}
+
+.price-section {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.price-section h2 {
+    font-size: 2rem;
+    margin-right: 2rem;
+    font-weight: 600;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+}
+
+.decrease-btn, .increase-btn {
+    background-color: #d3b18c;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.quantity-number {
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+.place-order-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.place-order-btn:hover {
+    background-color: #c0392b;
+}
+
+.cart-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    max-height: 50vh;
+    background-color: #f8f1e9;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 1rem;
+    display: none; /* Скрываем корзину по умолчанию */
+}
+
+.cart-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+
+.cart-content {
+    background: #fff;
+    padding: 1rem;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.cart-content h2 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.cart-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.close-cart {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #e74c3c;
+}
+
+/* Для планшетов (ширина до 768px) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .coffee-details {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .coffee-image img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .coffee-info {
+        margin-left: 0;
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+
+    .price-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .price-section h2 {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .place-order-btn {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    .cart-container {
+        width: 100%;
+        max-height: 70vh;
+    }
+}
+
+/* Для мобильных устройств (ширина до 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 0.5rem;
+    }
+
+    .back-btn {
+        font-size: 0.9rem;
+    }
+
+    .coffee-details {
+        padding: 1rem;
+    }
+
+    .coffee-image img {
+        max-width: 250px;
+    }
+
+    .coffee-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .coffee-info p {
+        font-size: 0.9rem;
+    }
+
+    .size-btn, .extra-btn, .milk-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .price-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .place-order-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+
+    .cart-container {
+        width: 100%;
+        max-height: 50vh;
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Details</title>
+    <link rel="stylesheet" href="coffee-details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-btn">&larr; BACK TO MENU</a>
+        <div class="order-status">
+            <button class="status-btn">&#128717; ORDER STATUS</button>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <main class="coffee-details">
+        <div class="coffee-image">
+            <img type="image/png" src="images/cup.png" alt="Espresso">
+        </div>
+        <div class="coffee-info">
+            <h1>Cinnamon and Cocoa</h1>
+            <p>A single espresso shot poured into hot foamy milk, with the surface topped with mildly sweetened cocoa powder and drizzled with scrumptious caramel syrup.</p>
+
+            <div class="options">
+                <div class="size">
+                    <h3>SIZE</h3>
+                    <button class="size-btn active">SHORT</button>
+                    <button class="size-btn">TALL</button>
+                    <button class="size-btn">GRANDE</button>
+                    <button class="size-btn">VENTI</button>
+                </div>
+
+                <div class="extra">
+                    <h3>EXTRA</h3>
+                    <button class="extra-btn active">SUGAR</button>
+                    <button class="extra-btn">MILK</button>
+                </div>
+
+                <div class="milk-type">
+                    <h3>MILK TYPE</h3>
+                    <button class="milk-btn">OAT MILK</button>
+                    <button class="milk-btn">SOY MILK</button>
+                    <button class="milk-btn active">ALMOND MILK</button>
+                </div>
+
+                <div class="price-section">
+                    <h2>&#8377;99</h2>
+                    <div class="quantity">
+                        <button class="decrease-btn">-</button>
+                        <span class="quantity-number">1</span>
+                        <button class="increase-btn">+</button>
+                    </div>
+                </div>
+
+                <button class="place-order-btn">PLACE ORDER</button>
+            </div>
+        </div>
+    </main>
+
+<script src="coffee-details.js"></script>
+</body>
+</html>
