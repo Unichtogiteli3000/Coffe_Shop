@@ -1,5 +1,13 @@
+// для сортировки
 const coffeeLinks = document.querySelectorAll('.coffee-type') //все эл-ты sidebar
 const menuItems = document.querySelectorAll('.menu-item') // все эл-ты main-container
+
+// Для sidebar
+const coffeeList = document.getElementById('coffee-list');
+const coffeeItems = coffeeList.querySelectorAll('li');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn'); 
+
 // обработчик события на каждый тип кофе
 coffeeLinks.forEach(link => {
     link.addEventListener('click', function(event) {
@@ -17,3 +25,36 @@ coffeeLinks.forEach(link => {
         })
     })
 })
+
+
+
+
+
+
+let currentIndex = 0;
+const itemsPerPage = 3;
+// Функция для отображения элементов - типов в Sidebar
+function showItems(startIndex) {
+    coffeeItems.forEach((item, index) => {
+        if (index >= startIndex && index < startIndex + itemsPerPage) {
+            item.classList.add('visible');
+        } else {
+            item.classList.remove('visible');
+        }
+    });
+}
+showItems(currentIndex);
+// Обработчик для кнопки вниз В сайдбаре
+nextBtn.addEventListener('click', () => {
+    if (currentIndex + itemsPerPage < coffeeItems.length) {
+        currentIndex++;
+        showItems(currentIndex);
+    }
+});
+// Обработчик для кнопки вверх в сайдбар
+prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        showItems(currentIndex);
+    }
+});
