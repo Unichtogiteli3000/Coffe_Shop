@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #fdfcfb;
@@ -16,6 +16,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header .container { /* поиск и корзина */
@@ -27,35 +28,71 @@ header .container { /* поиск и корзина */
 }
 
 #search-container {
+    display: flex;
     flex: 1;
-    margin-right: 10px;
+    margin-right: 20px;
+    position: relative;
 }
 
 #search-bar {
     width: 100%;
-    padding: 0.5rem;
-    border-radius: 5px;
+    padding: 0.8rem;
+    border-radius: 25px;
     border: 1px solid #ccc;
     font-size: 1rem;
+    padding-right: 2.5rem; /*отступ для кнопки поиска*/
 }
 
-.cart {
-    background-color: #e5d6cf;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-weight: bold; /* жирный */
+.order-status {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
     cursor: pointer;
+    font-size: 1.2rem;
+    color: #555;
 }
 
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.status-btn {
+    background-color: #d3b18c;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
 
 .main-container {
     display: flex;
     flex: 1; /* 1 позволяет элементу flex расширяться и заполнять всё доступное свободное пространство */
-    height: 100%;
+    margin-left: 180px;
+    padding: 1rem;
 }
 
 .sidebar {
-    width: 200px;
+    width: 180px;
     height: 100vh; /* вся высота экранна */
     background-color: #f8f1e9;
     padding: 1rem;
@@ -63,10 +100,14 @@ header .container { /* поиск и корзина */
     position: fixed;
     top: 0;
     left: 0; /* последние три свойства закрепляеют боковую панель с выбором типов кофе фикисрованно слева сверху*/
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar h2 {
     margin-bottom: 1rem;
+    font-weight: 600; /*жирность текста*/
 }
 
 .sidebar ul {
@@ -82,50 +123,131 @@ header .container { /* поиск и корзина */
     text-decoration: none;
     color: #333;
     font-weight: bold;
+    padding: 0.5rem 1rem;
+    display: block;/*элемент отображается как блок и занимает всю доступную ширин*/
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s; /*плавный переход между двумя сото-ми эл-та*/
 }
 
-.sidebar ul li a:hover { /*mouseover */
-    color: #3a2d2d;
+.sidebar ul li a:hover,
+.sidebar ul li a.active { /*mouseover */
+    background-color: #d3b18c;
+    color: #fff;
 }
 
 .coffee-display {
-    margin-left: 250px;
     flex: 1;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .coffee-display h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 2rem;
 }
 
 .menu-items {
     display: flex;
     flex-wrap: wrap; /* позволяет карточкам переходить на новую строчку */
-    gap: 1rem;
-    justify-content: center;
+    gap: 2rem;
+    justify-content: flex-start; /*выравнивание эл-ов слева*/
 }
 
 .menu-item img {
     width: 100%; /* изображение на всю шир контйнера*/
-    height: auto; /*сохр пропорции изображения*/
-    border-radius: 5px;
+    height: 180px;
+    object-fit: cover; /*целиком занимает необходимую оьласить с сохранением пропорций*/
+    border-radius: 10px;
     margin-bottom: 1rem;
 }
 
 .menu-item {
     background: #fff;
-    padding: 1rem;
+    padding: 1.5rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    height: 350px;
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);/*перемещает эл-т по игреку на 5px вверх*/
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: #3a2d2d;
+}
+
+.add-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #c0392b;
+}
+
+#coffee-list {
+    height: 180px; /* Высота для отображения трёх элементов */
+    overflow: hidden; /*если не умещается в блоке, то скрывается*/
+    position: relative;
+}
+
+.nav-btn {
+    background-color: #d3b18c;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+}
+
+#coffee-list li {
+    display: none; /* Скрываем все элементы по умолчанию */
+    margin-bottom: 0.5rem;
+}
+
+/*Показываем элементы, когда они активны*/
+#coffee-list li.visible {
+    display: block;
+}
+
+.nav-btn:hover {
+    background-color: #c39b7b;
 }
 
 footer {
