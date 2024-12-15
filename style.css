@@ -10,13 +10,12 @@ body {
 }
 
 header {
-    background-color: #3a2d2d; /* цвет кофейных зёрен */
+    background-color: #fdfcfb;
     color: #fff;
     padding: 1rem 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header .container { /* поиск и корзина */
@@ -28,19 +27,22 @@ header .container { /* поиск и корзина */
 }
 
 #search-container {
-    display: flex;
     flex: 1;
-    margin-right: 20px;
     position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 150px;
 }
 
 #search-bar {
     width: 100%;
-    padding: 0.8rem;
-    border-radius: 25px;
+    padding: 0.8rem 1rem;
+    border-radius: 30px;
     border: 1px solid #ccc;
+    background-color: #f3f0ec;
     font-size: 1rem;
-    padding-right: 2.5rem; /*отступ для кнопки поиска*/
+    color: #5c4b4b;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .order-status {
@@ -86,53 +88,67 @@ header .container { /* поиск и корзина */
 
 .main-container {
     display: flex;
-    flex: 1; /* 1 позволяет элементу flex расширяться и заполнять всё доступное свободное пространство */
+    flex: 1;
     margin-left: 180px;
+    margin-right: 0;
     padding: 1rem;
 }
 
+
 .sidebar {
-    width: 180px;
+    width: 200px;
     height: 100vh; /* вся высота экранна */
     background-color: #f8f1e9;
     padding: 1rem;
+    border-radius: 15px;
     border-right: 1px solid #ccc;
     position: fixed;
-    top: 0;
-    left: 0; /* последние три свойства закрепляеют боковую панель с выбором типов кофе фикисрованно слева сверху*/
+    top: 1rem;
+    left: 1rem; /* последние три свойства закрепляеют боковую панель с выбором типов кофе фикисрованно слева сверху*/
     display: flex;
     flex-direction: column;
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
 .sidebar h2 {
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: 600; /*жирность текста*/
+    color: #5c4b4b;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
 
 .sidebar ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .sidebar ul li a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    display: block;/*элемент отображается как блок и занимает всю доступную ширин*/
+    color: #5c4b4b;
+    font-weight: 500;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
     border-radius: 10px;
     transition: background-color 0.3s, color 0.3s; /*плавный переход между двумя сото-ми эл-та*/
 }
 
-.sidebar ul li a:hover,
-.sidebar ul li a.active { /*mouseover */
+.sidebar ul li a.active, .sidebar ul li a:focus {
     background-color: #d3b18c;
     color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul li a:hover {
+    background-color: #e8d6c0;
+    color: #3a2d2d;
 }
 
 .coffee-display {
@@ -140,6 +156,10 @@ header .container { /* поиск и корзина */
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: calc(100% - 200px);
+    margin: 0 auto;
+    width: 100%;
+    overflow-x: hidden; /*предотвращение горизонтального скроллинга*/
 }
 
 .coffee-display h2 {
@@ -151,8 +171,11 @@ header .container { /* поиск и корзина */
 .menu-items {
     display: flex;
     flex-wrap: wrap; /* позволяет карточкам переходить на новую строчку */
-    gap: 2rem;
+    gap: 1.5rem;
     justify-content: flex-start; /*выравнивание эл-ов слева*/
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .menu-item img {
@@ -169,14 +192,11 @@ header .container { /* поиск и корзина */
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 220px;
-    height: 350px;
+    width: calc(20% - 1.5rem);
+    max-width: 220px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    box-sizing: border-box; /* Это правило означает, что все элементы в HTML не будут добавлять внутренние отступы и границы к итоговым ширине и высоте*/
 }
 
 .menu-item:hover {
@@ -230,7 +250,7 @@ header .container { /* поиск и корзина */
     padding: 0.5rem;
     cursor: pointer;
     font-size: 1.2rem;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 0.5rem 0;
     width: 100%;
     text-align: center;
@@ -247,12 +267,151 @@ header .container { /* поиск и корзина */
 }
 
 .nav-btn:hover {
-    background-color: #c39b7b;
+    background-color: #b89470;
 }
 
 footer {
-    background-color: #3a2d2d;
-    color: #fff;
+    background-color: #fdfcfb;
+    color: #3a2d2d;
     text-align: center;
     padding: 1rem 0;
+}
+
+.cart-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    max-height: 50vh;
+    background-color: #f8f1e9;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 1rem;
+    display: none; /* Добавьте эту строку */
+}
+
+
+
+.cart-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.cart-content {
+    background: #fff;
+    padding: 1rem;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.cart-content h2 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.cart-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.close-cart {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #e74c3c;
+}
+
+/* Для планшетов (ширина до 768px) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    #search-container {
+        max-width: 100%;
+        padding-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .main-container {
+        flex-direction: column;
+        margin-left: 0;
+        padding: 0.5rem;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 1rem 0;
+    }
+
+    .coffee-display {
+        max-width: 100%;
+    }
+
+    .menu-item {
+        width: calc(50% - 1rem);
+        max-width: none;
+    }
+
+    .cart-container {
+        width: 100%;
+        max-height: 70vh;
+    }
+}
+
+/* Для мобильных устройств (ширина до 480px) */
+@media (max-width: 480px) {
+    .menu-item {
+        width: 100%; /* Карточки кофе на всю ширину */
+    }
+
+    .menu-items {
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .status-btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    header {
+        padding: 0.5rem;
+    }
+
+    #search-bar {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .sidebar h2 {
+        font-size: 1rem;
+    }
+
+    .sidebar ul li a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .cart-container {
+        width: 100%;
+        max-height: 50vh;
+    }
 }
