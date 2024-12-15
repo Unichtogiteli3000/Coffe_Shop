@@ -1,3 +1,9 @@
+// для открытия и закрытия корзины
+const orderStatusBtn = document.querySelector('.status-btn');
+const cartContainer = document.createElement('div');
+cartContainer.classList.add('cart-container');
+document.body.appendChild(cartContainer);
+
 // для сортировки
 const coffeeLinks = document.querySelectorAll('.coffee-type') //все эл-ты sidebar
 const menuItems = document.querySelectorAll('.menu-item') // все эл-ты main-container
@@ -30,7 +36,32 @@ coffeeLinks.forEach(link => {
 
 
 
+/* ставит ша каждую кноаку add обработчки событий, благодаря которому мы переходим на страницу с конкртным кофе */
+const addButtons = document.querySelectorAll('.add-btn');
 
+addButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const coffeeCard = event.target.closest('.menu-item');
+        const coffeeName = coffeeCard.querySelector('h3').textContent;
+        const coffeeImageSrc = coffeeCard.querySelector('img').src;
+        const coffeePrice = coffeeCard.querySelector('.price').textContent;
+
+        const coffeeData = {
+            name: coffeeName,
+            image: coffeeImageSrc,
+            price: coffeePrice
+        };
+        localStorage.setItem('selectedCoffee', JSON.stringify(coffeeData));
+        // Переход на страницу карточки кофе
+        window.location.href = 'coffee-details.html';
+    });
+});
+
+
+
+
+
+/* показывается три типа кофе в sidebar - не больше - не меньше */
 let currentIndex = 0;
 const itemsPerPage = 3;
 // Функция для отображения элементов - типов в Sidebar
@@ -58,3 +89,75 @@ prevBtn.addEventListener('click', () => {
         showItems(currentIndex);
     }
 });
+
+
+
+
+/* фильтрация поиска */
+// Получаем элементы для поиска
+const searchBar = document.getElementById('search-bar');
+//
+// Функция для поиска и фильтрации кофе
+searchBar.addEventListener('input', function () {
+    const searchTerm = searchBar.value.toLowerCase();
+
+    menuItems.forEach(item => {
+        const itemName = item.querySelector('h3').textContent.toLowerCase();
+        if (itemName.includes(searchTerm)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+
+//
+// Открытие и закрытие корзины
+orderStatusBtn.addEventListener('click', () => {
+    showCart();
+});
+
+
+
+
+// dunc для отображения корзинки
+function showCart() {
+    const orderDetails = JSON.parse(localStorage.getItem('orderDetails')) || [];
+    let cartHTML = `
+        <div class="cart-overlay">
+            <div class="cart-content">
+                <button class="close-cart">&times;</button>
+                <h2>Order Status</h2>
+                ${orderDetails.length > 0 ? orderDetails.map(order => `
+                    <div class="cart-item">
+                        <h3>${order.name}</h3>
+                        <p>Size: ${order.size}</p>
+                        <p>Milk: ${order.milk}</p>
+                        <p>Extras: ${order.extra}</p>
+                        <p>Quantity: ${order.quantity}</p>
+                        <p>Total: ${order.totalPrice}</p>
+                    </div>
+                `).join('') : '<p>Your cart is empty.</p>'}
+            </div>
+        </div>
+    `;
+
+    cartContainer.innerHTML = cartHTML;
+    cartContainer.style.display = 'block';
+
+    //Закрытие корзины
+    document.querySelector('.close-cart').addEventListener('click', () => {
+        cartContainer.innerHTML = '';
+    });
+}
+
+
+//Обновление счетчика корзины
+function updateCartCount() {
+    const orderDetails = JSON.parse(localStorage.getItem('orderDetails')) || [];
+    const totalCount = orderDetails.reduce((sum, order) => sum + order.quantity, 0);
+    document.querySelector('.cart-count').textContent = totalCount;
+}
+
+/*Обновляем счетчик при загрузке страницы*/
+updateCartCount();
